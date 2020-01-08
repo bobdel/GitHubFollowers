@@ -10,17 +10,15 @@
 		717DED0023C6501D0005C3A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DECFF23C6501D0005C3A2 /* AppDelegate.swift */; };
 		717DED0223C6501D0005C3A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DED0123C6501D0005C3A2 /* SceneDelegate.swift */; };
 		717DED0423C6501D0005C3A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DED0323C6501D0005C3A2 /* ViewController.swift */; };
-		717DED0723C6501D0005C3A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0523C6501D0005C3A2 /* Main.storyboard */; };
 		717DED0923C6501E0005C3A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0823C6501E0005C3A2 /* Assets.xcassets */; };
 		717DED0C23C6501E0005C3A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		717DECFC23C6501D0005C3A2 /* GitHubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		717DECFC23C6501D0005C3A2 /* GitHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717DECFF23C6501D0005C3A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717DED0123C6501D0005C3A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		717DED0323C6501D0005C3A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		717DED0623C6501D0005C3A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		717DED0823C6501E0005C3A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		717DED0B23C6501E0005C3A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		717DED0D23C6501E0005C3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +46,7 @@
 		717DECFD23C6501D0005C3A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				717DECFC23C6501D0005C3A2 /* GitHubFollowers.app */,
+				717DECFC23C6501D0005C3A2 /* GitHFollowers.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,7 +57,6 @@
 				717DECFF23C6501D0005C3A2 /* AppDelegate.swift */,
 				717DED0123C6501D0005C3A2 /* SceneDelegate.swift */,
 				717DED0323C6501D0005C3A2 /* ViewController.swift */,
-				717DED0523C6501D0005C3A2 /* Main.storyboard */,
 				717DED0823C6501E0005C3A2 /* Assets.xcassets */,
 				717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */,
 				717DED0D23C6501E0005C3A2 /* Info.plist */,
@@ -84,7 +81,7 @@
 			);
 			name = GitHubFollowers;
 			productName = GitHubFollowers;
-			productReference = 717DECFC23C6501D0005C3A2 /* GitHubFollowers.app */;
+			productReference = 717DECFC23C6501D0005C3A2 /* GitHFollowers.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -127,7 +124,6 @@
 			files = (
 				717DED0C23C6501E0005C3A2 /* LaunchScreen.storyboard in Resources */,
 				717DED0923C6501E0005C3A2 /* Assets.xcassets in Resources */,
-				717DED0723C6501D0005C3A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +143,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		717DED0523C6501D0005C3A2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				717DED0623C6501D0005C3A2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,9 +280,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bobdel.GitHubFollowers;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GitHFollowers;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,9 +298,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bobdel.GitHubFollowers;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GitHFollowers;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
