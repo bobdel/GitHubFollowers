@@ -12,23 +12,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    /// initialize a main tabBarViewController containing two NavigationControllers
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        // initialize a tabVC with two NavControllers with one ViewController each
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        let searchNavController = UINavigationController(rootViewController: SearchViewController())
-        
-        let favoritesNavController = UINavigationController(rootViewController: FavoritesListViewController())
-        
-        let tabBar = UITabBarController()
-        tabBar.viewControllers = [searchNavController, favoritesNavController]
-        
+                        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = tabBar
+        window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
+    }
+    
+    func createSearchNavigationController() -> UINavigationController {
+        let searchVC = SearchViewController()
+        searchVC.title = "Search"
+        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        return UINavigationController(rootViewController: searchVC)
+    }
+    
+    func createFavoritesListNavigationController() -> UINavigationController {
+        let favoritesVC = FavoritesListViewController()
+        favoritesVC.title = "Favorites"
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        return UINavigationController(rootViewController: favoritesVC)
+    }
+    
+    func createTabBar() -> UITabBarController {
+        let tabBarController = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen
+        tabBarController.viewControllers = [createSearchNavigationController(),
+                                            createFavoritesListNavigationController()]
+        return tabBarController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
