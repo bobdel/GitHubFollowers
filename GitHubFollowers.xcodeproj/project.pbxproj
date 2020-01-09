@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71763F2423C7A00A006A07BE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763F2323C7A00A006A07BE /* SearchViewController.swift */; };
+		71763F2623C7A0AA006A07BE /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763F2523C7A0AA006A07BE /* FavoritesListViewController.swift */; };
 		717DED0023C6501D0005C3A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DECFF23C6501D0005C3A2 /* AppDelegate.swift */; };
 		717DED0223C6501D0005C3A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DED0123C6501D0005C3A2 /* SceneDelegate.swift */; };
-		717DED0423C6501D0005C3A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DED0323C6501D0005C3A2 /* ViewController.swift */; };
 		717DED0923C6501E0005C3A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0823C6501E0005C3A2 /* Assets.xcassets */; };
 		717DED0C23C6501E0005C3A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71763F2323C7A00A006A07BE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		71763F2523C7A0AA006A07BE /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		717DECFC23C6501D0005C3A2 /* GitHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		717DECFF23C6501D0005C3A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		717DED0123C6501D0005C3A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		717DED0323C6501D0005C3A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		717DED0823C6501E0005C3A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		717DED0B23C6501E0005C3A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		717DED0D23C6501E0005C3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +37,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71763F2723C7A2E3006A07BE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				71763F2323C7A00A006A07BE /* SearchViewController.swift */,
+				71763F2523C7A0AA006A07BE /* FavoritesListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		71763F2823C7A300006A07BE /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				717DECFF23C6501D0005C3A2 /* AppDelegate.swift */,
+				717DED0123C6501D0005C3A2 /* SceneDelegate.swift */,
+				717DED0823C6501E0005C3A2 /* Assets.xcassets */,
+				717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		717DECF323C6501D0005C3A2 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +76,9 @@
 		717DECFE23C6501D0005C3A2 /* GitHubFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				717DECFF23C6501D0005C3A2 /* AppDelegate.swift */,
-				717DED0123C6501D0005C3A2 /* SceneDelegate.swift */,
-				717DED0323C6501D0005C3A2 /* ViewController.swift */,
-				717DED0823C6501E0005C3A2 /* Assets.xcassets */,
-				717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */,
+				71763F2823C7A300006A07BE /* Support */,
 				717DED0D23C6501E0005C3A2 /* Info.plist */,
+				71763F2723C7A2E3006A07BE /* ViewControllers */,
 			);
 			path = GitHubFollowers;
 			sourceTree = "<group>";
@@ -134,8 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				717DED0423C6501D0005C3A2 /* ViewController.swift in Sources */,
 				717DED0023C6501D0005C3A2 /* AppDelegate.swift in Sources */,
+				71763F2423C7A00A006A07BE /* SearchViewController.swift in Sources */,
+				71763F2623C7A0AA006A07BE /* FavoritesListViewController.swift in Sources */,
 				717DED0223C6501D0005C3A2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

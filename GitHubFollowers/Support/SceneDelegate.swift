@@ -15,12 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        // initialize a window because no storyboard exists
+        // initialize a tabVC with two NavControllers with one ViewController each
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let searchNavController = UINavigationController(rootViewController: SearchViewController())
+        
+        let favoritesNavController = UINavigationController(rootViewController: FavoritesListViewController())
+        
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [searchNavController, favoritesNavController]
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 
