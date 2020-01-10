@@ -20,7 +20,7 @@ class GFTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Configure common visual properties of button
+    /// Configure common visual properties of TextField
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -37,7 +37,7 @@ class GFTextField: UITextField {
         
         backgroundColor = .tertiarySystemBackground
         autocorrectionType = .no
-        
+        returnKeyType = .go
         placeholder = "Enter a username"
     }
 }
