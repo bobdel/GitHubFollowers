@@ -15,13 +15,13 @@ class GFTextField: UITextField {
         configure()
     }
     
-    // init required by the API to support storyboards
+    /// init required by the API to support storyboards
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // configure common visual properties of button
-    func configure() {
+    /// Configure common visual properties of button
+    private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 10

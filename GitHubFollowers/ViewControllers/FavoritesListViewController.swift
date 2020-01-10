@@ -9,10 +9,17 @@
 import UIKit
 
 class FavoritesListViewController: UIViewController {
+    
+    // MARK: properties
+    
+    
+    // MARK: viewcontroller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
     }
     
+    // MARK: private methods
+
 }

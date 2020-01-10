@@ -15,12 +15,12 @@ class GFButton: UIButton {
         configure()
     }
     
-    // init required by the API to support storyboards
+    /// init required by the API to support storyboards
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // configure object specific visual properties of button
+    /// Configure object specific visual properties of button
     init(backgroundColor: UIColor, title: String) {
         super.init(frame: .zero) // size created by autolayout
         self.backgroundColor = backgroundColor
@@ -28,8 +28,8 @@ class GFButton: UIButton {
         configure()
     }
     
-    // configure common visual properties of button
-    func configure() {
+    /// configure common visual properties of button
+    private func configure() {
         layer.cornerRadius = 10
         titleLabel?.textColor = .white
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
