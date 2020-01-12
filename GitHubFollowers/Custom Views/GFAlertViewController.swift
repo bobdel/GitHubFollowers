@@ -13,14 +13,14 @@ class GFAlertViewController: UIViewController {
     
     // MARK: properties
     
-    let containerView = UIView()
+    let containerView = GFContainerView(frame: .zero)
     let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel = GFBodyLabel(textAlignment: .center)
     let actionButton = GFButton(backgroundColor: .systemPink, title: "Ok")
     
-    var alertTitle: String?
-    var message: String?
-    var buttonTitle: String?
+    var alertTitle: String? // text for titleLabel
+    var message: String? // text for messageLabel
+    var buttonTitle: String? // text for actionButton
     
     let padding: CGFloat = 20
         
@@ -46,18 +46,9 @@ class GFAlertViewController: UIViewController {
         configureMessageLabel()
     }
     
-    // TODO: Move the container view into a custom reusable view.
-    
     private func configureContainerView() {
         view.addSubview(containerView)
-        
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = UIColor.systemBackground
-        
-        containerView.layer.cornerRadius = 16
-        containerView.layer.borderWidth = 2
-        containerView.layer.borderColor = UIColor.white.cgColor
-        
+                
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
