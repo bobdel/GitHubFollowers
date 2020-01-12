@@ -33,6 +33,7 @@ class GFAlertViewController: UIViewController {
         self.buttonTitle = buttonTitle
     }
     
+    /// init required by the API to support storyboards
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
