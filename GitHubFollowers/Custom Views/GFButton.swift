@@ -22,14 +22,13 @@ class GFButton: UIButton {
     }
     
     /// Configure object specific visual properties of button
-    init(backgroundColor: UIColor, title: String) {
-        super.init(frame: .zero) // size created by autolayout
+    convenience init(backgroundColor: UIColor, title: String) {
+        self.init(frame: .zero) // size created by autolayout
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
-        configure()
     }
     
-    /// configure common visual properties of button
+    /// Configure common visual properties of button
     private func configure() {
         layer.cornerRadius = 10
         titleLabel?.textColor = .white
