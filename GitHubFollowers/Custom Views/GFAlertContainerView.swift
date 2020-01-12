@@ -9,7 +9,7 @@
 import UIKit
 
 /// An appwide UIView modal alert container
-class GFContainerView: UIView {
+class GFAlertContainerView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

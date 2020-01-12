@@ -21,7 +21,7 @@
 		717DED0223C6501D0005C3A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DED0123C6501D0005C3A2 /* SceneDelegate.swift */; };
 		717DED0923C6501E0005C3A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0823C6501E0005C3A2 /* Assets.xcassets */; };
 		717DED0C23C6501E0005C3A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */; };
-		719FF1D623CB812E00DEDE71 /* GFContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719FF1D523CB812E00DEDE71 /* GFContainerView.swift */; };
+		719FF1D623CB812E00DEDE71 /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719FF1D523CB812E00DEDE71 /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		717DED0823C6501E0005C3A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		717DED0B23C6501E0005C3A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		717DED0D23C6501E0005C3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		719FF1D523CB812E00DEDE71 /* GFContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFContainerView.swift; sourceTree = "<group>"; };
+		719FF1D523CB812E00DEDE71 /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 				71183A3E23C8D21F0040E42F /* GFTextField.swift */,
 				7108309B23C953D70036389C /* GFTitleLabel.swift */,
 				7108309D23C95CDC0036389C /* GFBodyLabel.swift */,
-				719FF1D523CB812E00DEDE71 /* GFContainerView.swift */,
+				719FF1D523CB812E00DEDE71 /* GFAlertContainerView.swift */,
 				7108309F23C95F2A0036389C /* GFAlertViewController.swift */,
 			);
 			path = "Custom Views";
@@ -223,7 +223,7 @@
 				71183A3D23C8CD4F0040E42F /* GFButton.swift in Sources */,
 				715A47D223C8FA4900184527 /* FollowerListViewController.swift in Sources */,
 				71763F2423C7A00A006A07BE /* SearchViewController.swift in Sources */,
-				719FF1D623CB812E00DEDE71 /* GFContainerView.swift in Sources */,
+				719FF1D623CB812E00DEDE71 /* GFAlertContainerView.swift in Sources */,
 				710830A023C95F2A0036389C /* GFAlertViewController.swift in Sources */,
 				71763F2623C7A0AA006A07BE /* FavoritesListViewController.swift in Sources */,
 				7108309C23C953D70036389C /* GFTitleLabel.swift in Sources */,
