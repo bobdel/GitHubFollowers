@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// An appwide TextField utility class
 class GFTextField: UITextField {
 
     override init(frame: CGRect) {

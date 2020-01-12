@@ -1,5 +1,5 @@
 //
-//  GFButton.swift
+//  GHBodyLabel.swift
 //  GitHubFollowers
 //
 //  Created by Robert DeLaurentis on 1/10/20.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-class GFButton: UIButton {
+/// An appwide BodyLabel utility class
+class GFBodyLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,19 +21,19 @@ class GFButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// Configure object specific visual properties of button
-    init(backgroundColor: UIColor, title: String) {
-        super.init(frame: .zero) // size created by autolayout
-        self.backgroundColor = backgroundColor
-        self.setTitle(title, for: .normal)
+    init(textAlignment: NSTextAlignment) {
+        super.init(frame: .zero)
+        self.textAlignment = textAlignment
         configure()
     }
     
-    /// configure common visual properties of button
     private func configure() {
-        layer.cornerRadius = 10
-        titleLabel?.textColor = .white
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        textColor = .secondaryLabel
+        font = UIFont.preferredFont(forTextStyle: .body)
+        adjustsFontSizeToFitWidth = true
+        minimumScaleFactor = 0.75
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
+
 }
