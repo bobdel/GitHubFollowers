@@ -9,7 +9,7 @@
 import Foundation
 
 /// a single GitHub follower's information
-struct Follower: Codable {
+struct Follower: Codable, Hashable {
     
     var login: String
     var avatarUrl: String
