@@ -25,6 +25,7 @@ class FollowerCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// call from cell creation in vc to access FollowerCell properties
     func set(follower: Follower) {
         usernameLabel.text = follower.login
     }
