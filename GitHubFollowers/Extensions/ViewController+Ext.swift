@@ -8,6 +8,8 @@
 
 import UIKit
 
+fileprivate var containerView: UIView!
+
 extension UIViewController {
     
     /// Creates and presents a custom alert on the main thread
@@ -20,6 +22,36 @@ extension UIViewController {
         }
     }
     
+    /// overlay viewcontroller with an opaque layer to indicate loading state
+    func showLoadingView() {
+        containerView = UIView(frame: view.bounds)
+        view.addSubview(containerView)
+        
+        containerView.backgroundColor = .systemBackground
+        containerView.alpha = 0
+        
+        UIView.animate(withDuration: 0.20) { containerView.alpha = 0.8 }
+        
+        let activityIndicatior = UIActivityIndicatorView(style: .large)
+        containerView.addSubview(activityIndicatior)
+        
+        activityIndicatior.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicatior.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatior.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        activityIndicatior.startAnimating()
+    }
     
-    
+    /// dismiss loading overlay
+    func dismissLoadingView() {
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+            containerView = nil
+        }
+    }
 }
+
+
