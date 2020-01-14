@@ -6,13 +6,14 @@
 //  Copyright © 2020 Robert DeLaurentis. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// A singleton that manages network requests
 class NetworkManager {
     
     static let shared = NetworkManager()
     private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>() // in singleton to create an appwide cache
     
     // initialize Singleton
     private init() { }
