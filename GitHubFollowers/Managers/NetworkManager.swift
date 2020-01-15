@@ -65,4 +65,52 @@ class NetworkManager {
         task.resume()
         
     }
+    
+    
+    /// Returns an array of Follower or an error
+    /// - Parameters:
+    ///   - username: A valid GitHub username string
+    ///   - page: a integer for the page number
+    ///   - completed: a closure for the network request and result handler
+    func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
+        let endpoint = baseURL + "\(username)"
+        
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUsername))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            // handle the error. If error not nil call completion handler with error message
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            // handle the response. Check for success status code or call completion handler
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            // handle the data
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let user = try decoder.decode(User.self, from: data)
+                completed(.success(user))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+        
+        task.resume()
+        
+    }
 }
