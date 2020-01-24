@@ -19,6 +19,7 @@
 		715A47D223C8FA4900184527 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A47D123C8FA4900184527 /* FollowerListViewController.swift */; };
 		715A47D523C9104900184527 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A47D423C9104900184527 /* String+Ext.swift */; };
 		716191E123DBA24500CF080D /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716191E023DBA24500CF080D /* GFItemInfoView.swift */; };
+		716191E323DBA94000CF080D /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716191E223DBA94000CF080D /* GFItemInfoViewController.swift */; };
 		71763F2423C7A00A006A07BE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763F2323C7A00A006A07BE /* SearchViewController.swift */; };
 		71763F2623C7A0AA006A07BE /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763F2523C7A0AA006A07BE /* FavoritesListViewController.swift */; };
 		717DED0023C6501D0005C3A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717DECFF23C6501D0005C3A2 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		715A47D123C8FA4900184527 /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
 		715A47D423C9104900184527 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		716191E023DBA24500CF080D /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		716191E223DBA94000CF080D /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
 		71763F2323C7A00A006A07BE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		71763F2523C7A0AA006A07BE /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		717DECFC23C6501D0005C3A2 /* GitHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 			children = (
 				7108309F23C95F2A0036389C /* GFAlertViewController.swift */,
 				719ACCDB23DA49AF00E63703 /* GFUserInfoHeaderViewController.swift */,
+				716191E223DBA94000CF080D /* GFItemInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				71763F2623C7A0AA006A07BE /* FavoritesListViewController.swift in Sources */,
 				7108309C23C953D70036389C /* GFTitleLabel.swift in Sources */,
 				715A47D523C9104900184527 /* String+Ext.swift in Sources */,
+				716191E323DBA94000CF080D /* GFItemInfoViewController.swift in Sources */,
 				717DED0223C6501D0005C3A2 /* SceneDelegate.swift in Sources */,
 				7108309E23C95CDC0036389C /* GFBodyLabel.swift in Sources */,
 			);
