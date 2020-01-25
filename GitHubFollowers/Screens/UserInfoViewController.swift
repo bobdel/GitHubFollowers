@@ -8,6 +8,12 @@
 
 import UIKit
 
+// define protocol for this file's viewController
+protocol UserInfoViewControllerDelegate: class {
+    func didTapGitHubProfile()
+    func didTapGetFollowers()
+}
+
 class UserInfoViewController: UIViewController {
     
     // MARK: - Containers
@@ -47,16 +53,25 @@ class UserInfoViewController: UIViewController {
             
             switch result {
             case .success(let user):
-                DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemViewController(user: user), to: self.itemViewOne)
-                    self.add(childVC: GFFollowerItemViewController(user: user), to: self.itemViewTwo)
-                    self.dateLabel.text = " GitHub since \(user.createdAt.convertToDisplayFormat())"
-                }
+                DispatchQueue.main.async { self.configureUIElements(with: user) }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Error", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+    
+    func configureUIElements(with user: User) {
+        
+        let repoItemViewController = GFRepoItemViewController(user: user)
+        repoItemViewController.delegate = self
+        
+        let followerItemViewController = GFFollowerItemViewController(user: user)
+        followerItemViewController.delegate = self
+        
+        self.add(childVC: repoItemViewController, to: self.itemViewOne)
+        self.add(childVC: followerItemViewController, to: self.itemViewTwo)
+        self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+        self.dateLabel.text = " GitHub since \(user.createdAt.convertToDisplayFormat())"
     }
     
     func layoutUI() {
@@ -103,4 +118,18 @@ class UserInfoViewController: UIViewController {
         dismiss(animated: true)
     }
 
+}
+
+// managing the button taps on this controller. Protocol conformance
+extension UserInfoViewController: UserInfoViewControllerDelegate {
+    func didTapGitHubProfile() {
+        print("didTapGitHubProfile")
+        // show safari view controller
+    }
+    
+    func didTapGetFollowers() {
+        print("didTapGGetFollowers")
+        // dismiss this vc then update follower list screen with new user
+    }
+    
 }
