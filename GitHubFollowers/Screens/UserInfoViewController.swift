@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SafariServices
 
 // define protocol for this file's viewController
 protocol UserInfoViewControllerDelegate: class {
-    func didTapGitHubProfile()
-    func didTapGetFollowers()
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
 }
 
 class UserInfoViewController: UIViewController {
@@ -122,12 +123,20 @@ class UserInfoViewController: UIViewController {
 
 // managing the button taps on this controller. Protocol conformance
 extension UserInfoViewController: UserInfoViewControllerDelegate {
-    func didTapGitHubProfile() {
+    func didTapGitHubProfile(for user: User) {
         print("didTapGitHubProfile")
         // show safari view controller
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user in invalid.", buttonTitle: "Ok")
+            return
+        }
+        
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.preferredControlTintColor = .systemGreen
+        present(safariViewController, animated: true)
     }
     
-    func didTapGetFollowers() {
+    func didTapGetFollowers(for user: User) {
         print("didTapGGetFollowers")
         // dismiss this vc then update follower list screen with new user
     }
