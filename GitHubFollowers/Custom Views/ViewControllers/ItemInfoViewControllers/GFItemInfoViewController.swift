@@ -19,7 +19,7 @@ class GFItemInfoViewController: UIViewController {
     let actionButton = GFButton()
     
     var user: User!
-    var delegate: UserInfoViewControllerDelegate!
+    weak var delegate: UserInfoViewControllerDelegate!
     
     // MARK: - Initializers
     

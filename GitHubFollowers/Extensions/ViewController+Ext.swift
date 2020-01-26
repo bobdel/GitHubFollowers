@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 fileprivate var containerView: UIView!
 
@@ -20,6 +21,13 @@ extension UIViewController {
             alertVC.modalTransitionStyle = .crossDissolve
             self.present(alertVC, animated: true)
         }
+    }
+    
+    /// present SafariViewController
+    func presentSafariViewController(with url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.preferredControlTintColor = .systemGreen
+        present(safariViewController, animated: true)
     }
     
     /// overlay viewcontroller with an opaque layer to indicate loading state

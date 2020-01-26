@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 // define protocol for this file's viewController
 protocol UserInfoViewControllerDelegate: class {
@@ -130,10 +129,7 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
             presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user in invalid.", buttonTitle: "Ok")
             return
         }
-        
-        let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredControlTintColor = .systemGreen
-        present(safariViewController, animated: true)
+        presentSafariViewController(with: url)
     }
     
     func didTapGetFollowers(for user: User) {
