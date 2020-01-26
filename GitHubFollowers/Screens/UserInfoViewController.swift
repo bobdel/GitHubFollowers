@@ -135,6 +135,13 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
     
     func didTapGetFollowers(for user: User) {
         print("didTapGGetFollowers")
+        
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers.", buttonTitle: "Ok")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dismissViewController()
         // dismiss this vc then update follower list screen with new user
     }
     

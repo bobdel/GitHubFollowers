@@ -168,6 +168,16 @@ extension FollowerListViewController: FollowerListViewControllerDelegate {
     
     func didRequestFollowers(for username: String) {
         print("get followers for that user")
+        
+        self.username = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        
+        getFollowers(username: username, page: page)
+        
     }
     
 }
