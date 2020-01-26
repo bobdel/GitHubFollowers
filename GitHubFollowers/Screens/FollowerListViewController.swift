@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowerListViewControllerDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListViewController: UIViewController {
     
     enum Section { // required by diffable data source
@@ -157,4 +161,12 @@ extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelega
         isSearching = false
         updateData(on: followers)
     }
+}
+
+extension FollowerListViewController: FollowerListViewControllerDelegate {
+    
+    func didRequestFollowers(for username: String) {
+        print("get followers for that user")
+    }
+    
 }
