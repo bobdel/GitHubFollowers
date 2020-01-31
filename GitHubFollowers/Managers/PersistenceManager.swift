@@ -13,19 +13,21 @@ enum PersistenceActionType {
 }
 
 enum PersistenceManager {
-    
+
     static private let defaults = UserDefaults.standard
-    
+
     enum Keys {
         static let favorites = "favorites"
     }
-    
-    static func updateWith(favorite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
-        retrieveFavorites { (result) in
+
+    static func updateWith(favorite: Follower,
+                           actionType: PersistenceActionType,
+                           completed: @escaping (GFError?) -> Void) {
+            retrieveFavorites { (result) in
             switch result {
             case .success(let favorites):
                 var retreivedFavorites = favorites
-                
+
                 switch actionType {
                 case .add:
                     guard !retreivedFavorites.contains(favorite) else {
@@ -33,26 +35,26 @@ enum PersistenceManager {
                         return
                     }
                     retreivedFavorites.append(favorite)
-                    
+
                 case .remove:
                     retreivedFavorites.removeAll { $0.login == favorite.login }
                 }
-                
+
                 completed(save(favorites: retreivedFavorites))
-                
+
             case .failure(let error):
                 completed(error)
             }
         }
     }
-    
+
     /// Retreive Favorites
     static func retrieveFavorites(completed: @escaping (Result<[Follower], GFError>) -> Void) {
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             completed(.success([])) // return a blank array if there is no stored object
             return
         }
-        
+
         do {
             let decoder = JSONDecoder()
             let favorites = try decoder.decode([Follower].self, from: favoritesData)
@@ -61,7 +63,7 @@ enum PersistenceManager {
             completed(.failure(.unableToFavorite))
         }
     }
-    
+
     /// Save Favorites
     static func save(favorites: [Follower]) -> GFError? {
         do {
@@ -73,5 +75,5 @@ enum PersistenceManager {
             return .unableToFavorite
         }
     }
-    
+
 }

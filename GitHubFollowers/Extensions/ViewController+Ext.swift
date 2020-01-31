@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 extension UIViewController {
-    
+
     /// Creates and presents a custom alert on the main thread
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
         DispatchQueue.main.async {
@@ -20,14 +20,12 @@ extension UIViewController {
             self.present(alertVC, animated: true)
         }
     }
-    
+
     /// present SafariViewController
     func presentSafariViewController(with url: URL) {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.preferredControlTintColor = .systemGreen
         present(safariViewController, animated: true)
     }
-    
+
 }
-
-

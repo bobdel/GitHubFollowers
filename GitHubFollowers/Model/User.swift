@@ -10,7 +10,7 @@ import Foundation
 
 /// a GitHub user's information based on the SearchViewController response
 struct User: Codable {
-    
+
     let login: String
     let avatarUrl: String
     var name: String?
@@ -22,5 +22,5 @@ struct User: Codable {
     let following: Int
     let followers: Int
     let createdAt: Date
-    
+
 }

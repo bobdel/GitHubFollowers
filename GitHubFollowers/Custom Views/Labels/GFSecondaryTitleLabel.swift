@@ -14,17 +14,17 @@ class GFSecondaryTitleLabel: UILabel {
         super.init(frame: frame)
         configure()
     }
-    
+
     /// init required by the API to support storyboards
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     convenience init(fontSize: CGFloat) {
         self.init(frame: .zero)
         font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
     }
-    
+
     private func configure() {
         textColor = .secondaryLabel
         adjustsFontSizeToFitWidth = true

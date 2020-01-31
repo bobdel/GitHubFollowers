@@ -9,18 +9,18 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    
+
     // MARK: properties
-    
+
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
     var logoImageViewTopConstraint: NSLayoutConstraint!
-    
+
     var isUsernameEntered: Bool { !usernameTextField.text!.isEmpty }
-    
+
     // MARK: viewcontroller lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -29,36 +29,39 @@ class SearchViewController: UIViewController {
         configureCallToActionButton()
         createDismissKeyboardTapGesture()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
+
     @objc func pushFollowerListViewController() {
-        
+
         guard isUsernameEntered else {
-            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😃!", buttonTitle: "Ok")
+            presentGFAlertOnMainThread(title: "Empty Username",
+                                       message: "Please enter a username. We need to know who to look for 😃!",
+                                       buttonTitle: "Ok")
             return
         }
-        
+
         usernameTextField.resignFirstResponder() // fixes overlap with slide gesture
-            
+
         let followerListVC = FollowerListViewController(username: usernameTextField.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
-    
+
     // MARK: configure subviews
-    
+
     private func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
-        
+
         let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
-        
-        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
+
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                                        constant: topConstraintConstant)
         logoImageViewTopConstraint.isActive = true
 
         NSLayoutConstraint.activate([
@@ -67,11 +70,11 @@ class SearchViewController: UIViewController {
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
-    
+
     private func configureTextField() {
         view.addSubview(usernameTextField)
         usernameTextField.delegate = self
-        
+
         NSLayoutConstraint.activate([
             usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
             usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -79,11 +82,11 @@ class SearchViewController: UIViewController {
             usernameTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
+
     private func configureCallToActionButton() {
         view.addSubview(callToActionButton)
         callToActionButton.addTarget(self, action: #selector(pushFollowerListViewController), for: .touchUpInside)
-        
+
         NSLayoutConstraint.activate([
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             callToActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -91,7 +94,7 @@ class SearchViewController: UIViewController {
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
+
     // MARK: handle keyboard
 
     /// tapping anywhere on screen dismisses keyboard

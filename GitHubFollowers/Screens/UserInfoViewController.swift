@@ -15,23 +15,22 @@ protocol UserInfoViewControllerDelegate: class {
 }
 
 class UserInfoViewController: UIViewController {
-    
+
     // MARK: - Containers
-    
+
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
     let dateLabel = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
-    
+
     // MARK: - Properties
-    
+
     var username: String!
     weak var delegate: FollowerListViewControllerDelegate!
 
-    
     // MARK: - ViewController Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -39,19 +38,21 @@ class UserInfoViewController: UIViewController {
 
         getUserInfo()
     }
-    
+
     // MARK: - Helper Functions
-    
+
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self,
+                                         action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = doneButton
     }
-    
+
     func getUserInfo() {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
-            
+
             switch result {
             case .success(let user):
                 DispatchQueue.main.async { self.configureUIElements(with: user) }
@@ -60,21 +61,21 @@ class UserInfoViewController: UIViewController {
             }
         }
     }
-    
+
     func configureUIElements(with user: User) {
-        
+
         let repoItemViewController = GFRepoItemViewController(user: user)
         repoItemViewController.delegate = self
-        
+
         let followerItemViewController = GFFollowerItemViewController(user: user)
         followerItemViewController.delegate = self
-        
+
         self.add(childVC: repoItemViewController, to: self.itemViewOne)
         self.add(childVC: followerItemViewController, to: self.itemViewTwo)
         self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
         self.dateLabel.text = " GitHub since \(user.createdAt.convertToMonthYearFormat())"
     }
-    
+
     func layoutUI() {
         let padding: CGFloat = 20
         let itemHeight: CGFloat = 140
@@ -84,18 +85,17 @@ class UserInfoViewController: UIViewController {
         for itemView in itemViews {
             view.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
-            
+
             NSLayoutConstraint.activate([
                 itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
             ])
         }
-        
-                
+
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
-            
+
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
 
@@ -105,16 +105,16 @@ class UserInfoViewController: UIViewController {
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
             dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
-        
+
     }
-    
+
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
     }
-    
+
     @objc func dismissViewController() {
         dismiss(animated: true)
     }
@@ -127,15 +127,17 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
         print("didTapGitHubProfile")
         // show safari view controller
         guard let url = URL(string: user.htmlUrl) else {
-            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user in invalid.", buttonTitle: "Ok")
+            presentGFAlertOnMainThread(title: "Invalid URL",
+                                       message: "The url attached to this user in invalid.",
+                                       buttonTitle: "Ok")
             return
         }
         presentSafariViewController(with: url)
     }
-    
+
     func didTapGetFollowers(for user: User) {
         print("didTapGGetFollowers")
-        
+
         guard user.followers != 0 else {
             presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers.", buttonTitle: "Ok")
             return
@@ -144,5 +146,5 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
         dismissViewController()
         // dismiss this vc then update follower list screen with new user
     }
-    
+
 }
