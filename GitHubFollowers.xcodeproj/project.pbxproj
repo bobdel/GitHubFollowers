@@ -14,6 +14,7 @@
 		7113A03E23CCFE8100C41C50 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A03D23CCFE8100C41C50 /* UIHelper.swift */; };
 		71183A3D23C8CD4F0040E42F /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71183A3C23C8CD4F0040E42F /* GFButton.swift */; };
 		71183A3F23C8D21F0040E42F /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71183A3E23C8D21F0040E42F /* GFTextField.swift */; };
+		711B9FDE23E4E47100D8C8C1 /* GFDataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711B9FDD23E4E47100D8C8C1 /* GFDataLoadingViewController.swift */; };
 		7129C13D23CAA04000325D3E /* ViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7129C13C23CAA04000325D3E /* ViewController+Ext.swift */; };
 		7158CCB123CF87B000D5BD6E /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158CCB023CF87B000D5BD6E /* UserInfoViewController.swift */; };
 		715A47D223C8FA4900184527 /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A47D123C8FA4900184527 /* FollowerListViewController.swift */; };
@@ -52,6 +53,7 @@
 		7113A03D23CCFE8100C41C50 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		71183A3C23C8CD4F0040E42F /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		71183A3E23C8D21F0040E42F /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		711B9FDD23E4E47100D8C8C1 /* GFDataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingViewController.swift; sourceTree = "<group>"; };
 		7129C13C23CAA04000325D3E /* ViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Ext.swift"; sourceTree = "<group>"; };
 		7158CCB023CF87B000D5BD6E /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		715A47D123C8FA4900184527 /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				716191E823DBAF2200CF080D /* ItemInfoViewControllers */,
 				7108309F23C95F2A0036389C /* GFAlertViewController.swift */,
 				719ACCDB23DA49AF00E63703 /* GFUserInfoHeaderViewController.swift */,
+				711B9FDD23E4E47100D8C8C1 /* GFDataLoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				717DED0023C6501D0005C3A2 /* AppDelegate.swift in Sources */,
 				716191E123DBA24500CF080D /* GFItemInfoView.swift in Sources */,
 				716A58A323DBC19500564BC6 /* Date+Ext.swift in Sources */,
+				711B9FDE23E4E47100D8C8C1 /* GFDataLoadingViewController.swift in Sources */,
 				7129C13D23CAA04000325D3E /* ViewController+Ext.swift in Sources */,
 				716191E523DBAC3900CF080D /* GFRepoItemViewController.swift in Sources */,
 				718AF43F23DD1F3C00D27BAB /* PersistenceManager.swift in Sources */,

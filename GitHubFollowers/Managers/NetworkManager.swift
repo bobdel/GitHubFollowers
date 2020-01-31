@@ -103,11 +103,53 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .iso8601
                 let user = try decoder.decode(User.self, from: data)
                 completed(.success(user))
             } catch {
                 completed(.failure(.invalidData))
             }
+        }
+        
+        task.resume()
+    }
+    
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        
+        // return image if found in cache
+        
+        let cacheKey = NSString(string: urlString) // cache uses URL as key
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image) // send image to completion handler
+            return
+        }
+        
+        // if image not in cache, fetch from network
+        // this code is terse because
+        // user never sees errors
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil) // no image URL available
+            return
+        }
+        
+        // make a network request for the image
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self,
+                error == nil,
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data) else {
+                    completed(nil) // no image available
+                    return
+                }
+                        
+            // if we have an image
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            
+            completed(image) // this is the image created on lne 143
         }
         
         task.resume()

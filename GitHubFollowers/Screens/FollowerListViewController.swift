@@ -12,7 +12,7 @@ protocol FollowerListViewControllerDelegate: class {
     func didRequestFollowers(for username: String)
 }
 
-class FollowerListViewController: UIViewController {
+class FollowerListViewController: GFDataLoadingViewController {
     
     enum Section { // required by diffable data source
         case main

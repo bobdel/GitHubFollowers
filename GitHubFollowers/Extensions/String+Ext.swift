@@ -8,7 +8,7 @@ import Foundation
 
 extension String {
     
-    /// specific to this project
+    /// specific to this project - was later dropped from code path by changing json parser
     func convertToDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
