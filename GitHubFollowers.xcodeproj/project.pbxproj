@@ -212,6 +212,7 @@
 				717DECFF23C6501D0005C3A2 /* AppDelegate.swift */,
 				717DED0123C6501D0005C3A2 /* SceneDelegate.swift */,
 				717DED0823C6501E0005C3A2 /* Assets.xcassets */,
+				717DED0D23C6501E0005C3A2 /* Info.plist */,
 				717DED0A23C6501E0005C3A2 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
@@ -243,7 +244,6 @@
 				71183A3B23C8CD1C0040E42F /* Custom Views */,
 				71763F2723C7A2E3006A07BE /* Screens */,
 				71763F2823C7A300006A07BE /* Support */,
-				717DED0D23C6501E0005C3A2 /* Info.plist */,
 			);
 			path = GitHubFollowers;
 			sourceTree = "<group>";
@@ -547,7 +547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7Y3X25PDL6;
-				INFOPLIST_FILE = GitHubFollowers/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GitHubFollowers/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -565,7 +565,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7Y3X25PDL6;
-				INFOPLIST_FILE = GitHubFollowers/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GitHubFollowers/Support/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
