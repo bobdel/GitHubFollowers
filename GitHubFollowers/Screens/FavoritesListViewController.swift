@@ -81,10 +81,12 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as? FavoriteCell
+        // swiftlint:disable force_cast
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as! FavoriteCell
+        // swiftlint:enable force_cast
         let favorite = favorites[indexPath.row]
-        cell?.set(favorite: favorite)
-        return cell ?? UITableViewCell()
+        cell.set(favorite: favorite)
+        return cell
     }
 
     // didselectrow - show followers from selected favorite

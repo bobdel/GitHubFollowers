@@ -118,9 +118,11 @@ class FollowerListViewController: GFDataLoadingViewController {
             cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: FollowerCell.reuseID,
-                for: indexPath) as? FollowerCell
+                // swiftlint:disable force_cast
+                for: indexPath) as! FollowerCell
+                // swiftlint:enable force_cast
 
-                cell?.set(follower: follower)
+                cell.set(follower: follower)
 
                 return cell
         })
