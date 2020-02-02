@@ -9,7 +9,7 @@
 import UIKit
 
 /// a collection of utility functions needed to manage UI
-struct UIHelper {
+enum UIHelper {
 
     static func createThreeColumnFlowLayout(in view: UIView) -> UICollectionViewFlowLayout {
         let width = view.bounds.width // screen width
