@@ -27,10 +27,8 @@ class FollowerCell: UICollectionViewCell {
 
     /// call from cell creation in vc to access FollowerCell properties
     func set(follower: Follower) {
-        NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [weak self] (image) in
-            guard let self = self else { return }
-            DispatchQueue.main.async { self.avatarImageView.image = image }
-        }
+        avatarImageView.downloadImage(fromURL: follower.avatarUrl)
+        usernameLabel.text = follower.login
     }
 
     private func configure() {

@@ -42,6 +42,7 @@ class GFAlertViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         view.addSubviews(containerView, titleLabel, actionButton, messageLabel)
+
         // the order of these calls matter because message label position depends on action button
         configureContainerView()
         configureTitleLabel()
