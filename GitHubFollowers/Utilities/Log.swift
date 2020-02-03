@@ -13,5 +13,5 @@ private let subsystem = "com.bobdel.ghfollowers"
 
 struct Log {
     static let general = OSLog(subsystem: subsystem, category: "general")
-    static let network = OSLog(subsystem: subsystem, category: "networking")
+    static let network = OSLog(subsystem: subsystem, category: "network")
 }
