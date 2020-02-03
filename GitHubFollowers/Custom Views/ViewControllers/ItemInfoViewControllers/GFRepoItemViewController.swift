@@ -8,7 +8,24 @@
 
 import UIKit
 
+// define protocol to message UserInfoViewController
+// handles button taps on modal info screen
+protocol GFRepoItemViewControllerDelegate: class {
+    func didTapGitHubProfile(for user: User)
+}
+
 class GFRepoItemViewController: GFItemInfoViewController {
+
+    weak var delegate: GFRepoItemViewControllerDelegate!
+
+    init(user: User, delegate: GFRepoItemViewControllerDelegate) {
+        super.init(user: user)
+        self.delegate = delegate
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - ViewController Lifecycle
 

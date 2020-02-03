@@ -63,14 +63,8 @@ class UserInfoViewController: UIViewController {
 
     func configureUIElements(with user: User) {
 
-        let repoItemViewController = GFRepoItemViewController(user: user)
-        repoItemViewController.delegate = self
-
-        let followerItemViewController = GFFollowerItemViewController(user: user)
-        followerItemViewController.delegate = self
-
-        self.add(childVC: repoItemViewController, to: self.itemViewOne)
-        self.add(childVC: followerItemViewController, to: self.itemViewTwo)
+        self.add(childVC: GFRepoItemViewController(user: user, delegate: self), to: self.itemViewOne)
+        self.add(childVC: GFFollowerItemViewController(user: user, delegate: self), to: self.itemViewTwo)
         self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
         self.dateLabel.text = " GitHub since \(user.createdAt.convertToMonthYearFormat())"
     }
@@ -120,10 +114,9 @@ class UserInfoViewController: UIViewController {
 
 }
 
-// managing the button taps on this controller. Protocol conformance
-extension UserInfoViewController: ItemInfoViewControllerDelegate {
+extension UserInfoViewController: GFRepoItemViewControllerDelegate {
+
     func didTapGitHubProfile(for user: User) {
-        print("didTapGitHubProfile")
         // show safari view controller
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlertOnMainThread(title: "Invalid URL",
@@ -133,17 +126,17 @@ extension UserInfoViewController: ItemInfoViewControllerDelegate {
         }
         presentSafariViewController(with: url)
     }
+}
+
+extension UserInfoViewController: GFFollowerItemViewControllerDelegate {
 
     func didTapGetFollowers(for user: User) {
-        print("didTapGGetFollowers")
-
         guard user.followers != 0 else {
             presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers.", buttonTitle: "Ok")
             return
-        }
-        delegate.didRequestFollowers(for: user.login)
-        dismissViewController()
-        // dismiss this vc then update follower list screen with new user
+                }
+                delegate.didRequestFollowers(for: user.login)
+                dismissViewController()
+                // dismiss this vc then update follower list screen with new user
     }
-
 }

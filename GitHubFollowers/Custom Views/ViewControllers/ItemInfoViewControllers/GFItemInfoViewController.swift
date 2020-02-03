@@ -8,13 +8,6 @@
 
 import UIKit
 
-// define protocol to message UserInfoViewController
-// handles button taps on modal info screen
-protocol ItemInfoViewControllerDelegate: class {
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
-}
-
 /// Superclass for the GFInfoViewControllers
 class GFItemInfoViewController: UIViewController {
 
@@ -25,7 +18,6 @@ class GFItemInfoViewController: UIViewController {
     let actionButton = GFButton()
 
     var user: User!
-    weak var delegate: ItemInfoViewControllerDelegate!
 
     // MARK: - Initializers
 
