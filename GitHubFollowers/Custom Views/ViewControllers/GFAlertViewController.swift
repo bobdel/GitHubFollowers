@@ -24,7 +24,7 @@ class GFAlertViewController: UIViewController {
 
     let padding: CGFloat = 20
 
-    // MARK: viewcontroller lifecycle
+    // MARK: - Initializers
 
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
@@ -38,6 +38,8 @@ class GFAlertViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: viewcontroller lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
@@ -49,6 +51,8 @@ class GFAlertViewController: UIViewController {
         configureActionButton()
         configureMessageLabel()
     }
+
+    // MARK: - Layout Methods
 
     private func configureContainerView() {
 
@@ -102,6 +106,8 @@ class GFAlertViewController: UIViewController {
         ])
 
     }
+
+    // MARK: - Action Methods
 
     @objc private func dismissViewController() {
         dismiss(animated: true)

@@ -10,8 +10,12 @@ import UIKit
 
 class GFAvatarImageView: UIImageView {
 
+    // MARK: - Properties
+
     let cache = NetworkManager.shared.cache
     let placeholderImage = Images.placeholder
+
+    // MARK: - Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,6 +27,8 @@ class GFAvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Layout Methods
+
     private func configure() {
         layer.cornerRadius = 10
         clipsToBounds = true
@@ -30,6 +36,8 @@ class GFAvatarImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    /// Download Avatar Image
+    /// - Parameter url: network URL as a string
     func downloadImage(fromURL url: String) {
         NetworkManager.shared.downloadImage(from: url) { [weak self] (image) in
             guard let self = self else { return }

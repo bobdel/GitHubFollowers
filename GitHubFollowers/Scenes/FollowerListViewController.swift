@@ -10,6 +10,8 @@ import UIKit
 
 class FollowerListViewController: GFDataLoadingViewController {
 
+    // MARK: - Enumerations
+
     enum Section { // required by diffable data source
         case main
     }
@@ -27,6 +29,8 @@ class FollowerListViewController: GFDataLoadingViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
 
+    // MARK: - Initializers
+
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username = username
@@ -37,7 +41,7 @@ class FollowerListViewController: GFDataLoadingViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: viewcontroller lifecycle
+    // MARK: - Viewcontroller Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +57,7 @@ class FollowerListViewController: GFDataLoadingViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
-    // MARK: - configuration methods
+    // MARK: - Layout Methods
 
     private func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -113,7 +117,7 @@ class FollowerListViewController: GFDataLoadingViewController {
         self.updateData(on: self.followers)
     }
 
-    // MARK: - diffable datasource methods
+    // MARK: - Diffable Datasource Methods
 
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(
@@ -176,7 +180,7 @@ class FollowerListViewController: GFDataLoadingViewController {
     }
 }
 
-// MARK: - Delegation Conformance Extensions
+// MARK: - Extensions (Delegation Conformance)
 
 /// UICollectionViewDelegate Conformance
 extension FollowerListViewController: UICollectionViewDelegate {
@@ -231,7 +235,7 @@ extension FollowerListViewController: UserInfoViewControllerDelegate {
         self.username = username
         title = username
         page = 1
-        
+
         followers.removeAll()
         filteredFollowers.removeAll()
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)

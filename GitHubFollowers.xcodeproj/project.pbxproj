@@ -201,7 +201,7 @@
 			path = "Tab Bar Controllers";
 			sourceTree = "<group>";
 		};
-		71763F2723C7A2E3006A07BE /* Screens */ = {
+		71763F2723C7A2E3006A07BE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				71763F2323C7A00A006A07BE /* SearchViewController.swift */,
@@ -209,7 +209,7 @@
 				715A47D123C8FA4900184527 /* FollowerListViewController.swift */,
 				7158CCB023CF87B000D5BD6E /* UserInfoViewController.swift */,
 			);
-			path = Screens;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		71763F2823C7A300006A07BE /* Support */ = {
@@ -245,10 +245,10 @@
 			children = (
 				71CF82D423CBC68000EE48D9 /* Utilities */,
 				71CF82D123CBA99C00EE48D9 /* Managers */,
-				71CF82CC23CB926000EE48D9 /* Model */,
 				715A47D323C9101900184527 /* Extensions */,
+				71CF82CC23CB926000EE48D9 /* Model */,
 				71183A3B23C8CD1C0040E42F /* Custom Views */,
-				71763F2723C7A2E3006A07BE /* Screens */,
+				71763F2723C7A2E3006A07BE /* Scenes */,
 				71763F2823C7A300006A07BE /* Support */,
 			);
 			path = GitHubFollowers;

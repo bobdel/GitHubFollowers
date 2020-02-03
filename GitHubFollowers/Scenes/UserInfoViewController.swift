@@ -8,14 +8,18 @@
 
 import UIKit
 
+// MARK: - Protocol
+
 /// call a method on FollowerListViewController to dismiss a VC
 protocol UserInfoViewControllerDelegate: class {
     func didRequestFollowers(for username: String)
 }
 
+// MARK: - UIViewController
+
 class UserInfoViewController: UIViewController {
 
-    // MARK: - Containers
+    // MARK: - Properties
 
     let scrollView = UIScrollView()
     let scrollContentView = UIView()
@@ -25,8 +29,6 @@ class UserInfoViewController: UIViewController {
     let itemViewTwo = UIView()
     let dateLabel = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
-
-    // MARK: - Properties
 
     var username: String!
     weak var delegate: UserInfoViewControllerDelegate!
@@ -42,7 +44,7 @@ class UserInfoViewController: UIViewController {
         getUserInfo()
     }
 
-    // MARK: - Helper Functions
+    // MARK: - Layout Methods
 
     func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -131,6 +133,8 @@ class UserInfoViewController: UIViewController {
 
 }
 
+// MARK: - Extensions (Delegate Conformance)
+
 extension UserInfoViewController: GFRepoItemViewControllerDelegate {
 
     func didTapGitHubProfile(for user: User) {
@@ -149,7 +153,9 @@ extension UserInfoViewController: GFFollowerItemViewControllerDelegate {
 
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {
-            presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers.", buttonTitle: "Ok")
+            presentGFAlertOnMainThread(title: "No Followers",
+                                       message: "This user has no followers.",
+                                       buttonTitle: "Ok")
             return
                 }
                 delegate.didRequestFollowers(for: user.login)

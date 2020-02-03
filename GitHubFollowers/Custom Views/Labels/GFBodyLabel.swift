@@ -11,6 +11,8 @@ import UIKit
 /// An appwide BodyLabel utility class
 class GFBodyLabel: UILabel {
 
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -25,6 +27,8 @@ class GFBodyLabel: UILabel {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
     }
+
+    // MARK: - Layout Methods
 
     private func configure() {
         textColor = .secondaryLabel

@@ -23,6 +23,8 @@ class GFUserInfoHeaderViewController: UIViewController {
 
     var user: User!
 
+    // MARK: - Initializers
+
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user

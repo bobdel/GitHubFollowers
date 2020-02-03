@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    // MARK: properties
+    // MARK: - Properties
 
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
 
     var isUsernameEntered: Bool { !usernameTextField.text!.isEmpty }
 
-    // MARK: viewcontroller lifecycle
+    // MARK: - ViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,8 @@ class SearchViewController: UIViewController {
         usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+
+    // MARK: - Helper Methods
 
     @objc func pushFollowerListViewController() {
 
@@ -98,6 +100,8 @@ class SearchViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
 }
+
+// MARK: - Extensions
 
 /// UITextFieldDelegate Conformance
 extension SearchViewController: UITextFieldDelegate {

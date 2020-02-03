@@ -11,6 +11,8 @@ import UIKit
 /// An appwide UIView modal alert container
 class GFAlertContainerView: UIView {
 
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,6 +22,8 @@ class GFAlertContainerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Layout Methods
 
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false

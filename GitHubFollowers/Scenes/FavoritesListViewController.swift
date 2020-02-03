@@ -10,12 +10,12 @@ import UIKit
 
 class FavoritesListViewController: GFDataLoadingViewController {
 
-    // MARK: properties
+    // MARK: - Properties
 
     let tableView = UITableView()
     var favorites: [Follower] = []
 
-    // MARK: viewcontroller lifecycle
+    // MARK: - Viewcontroller Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class FavoritesListViewController: GFDataLoadingViewController {
         getFavorites()
     }
 
-    // MARK: Layout methods
+    // MARK: - Layout methods
 
     func configureViewController() {
         view.backgroundColor = .systemBackground
@@ -77,6 +77,8 @@ class FavoritesListViewController: GFDataLoadingViewController {
         }
     }
 }
+
+// MARK: - Extension (Data Source)
 
 /// entire data source
 extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSource {

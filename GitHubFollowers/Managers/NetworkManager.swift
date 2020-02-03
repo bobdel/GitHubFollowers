@@ -112,6 +112,10 @@ class NetworkManager {
         task.resume()
     }
 
+    /// Download Avatar Image
+    /// - Parameters:
+    ///   - urlString: The URL on the network to retrieve string
+    ///   - completed: update UI
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
 
         // return image if found in cache
@@ -147,7 +151,7 @@ class NetworkManager {
 
             self.cache.setObject(image, forKey: cacheKey)
 
-            completed(image) // this is the image created on lne 143
+            completed(image) // this is the image created in the guard block above
         }
 
         task.resume()

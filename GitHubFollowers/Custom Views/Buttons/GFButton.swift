@@ -11,6 +11,8 @@ import UIKit
 /// an app wide UIButton utility class
 class GFButton: UIButton {
 
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -27,6 +29,8 @@ class GFButton: UIButton {
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
     }
+
+    // MARK: - Layout Methods
 
     /// Configure common visual properties of button
     private func configure() {

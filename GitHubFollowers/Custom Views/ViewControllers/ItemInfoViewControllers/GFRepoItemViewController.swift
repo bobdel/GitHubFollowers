@@ -16,7 +16,10 @@ protocol GFRepoItemViewControllerDelegate: class {
 
 class GFRepoItemViewController: GFItemInfoViewController {
 
+    // MARK: - Properties
     weak var delegate: GFRepoItemViewControllerDelegate!
+
+    // MARK: - Initializers
 
     init(user: User, delegate: GFRepoItemViewControllerDelegate) {
         super.init(user: user)
@@ -41,6 +44,8 @@ class GFRepoItemViewController: GFItemInfoViewController {
         itemInfoViewTwo.set(itemInfoType: .gists, withCount: user.publicGists)
         actionButton.set(backgroundColor: .systemPurple, title: "GitHub Profile")
     }
+
+    // MARK: - Delegate Methods
 
     override func actionButtonTapped() {
         // note delegate set in configureUIElements() in UserInfoViewController
