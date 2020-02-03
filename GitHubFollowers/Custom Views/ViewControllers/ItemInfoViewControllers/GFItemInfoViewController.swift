@@ -8,6 +8,13 @@
 
 import UIKit
 
+// define protocol to message UserInfoViewController
+// handles button taps on modal info screen
+protocol ItemInfoViewControllerDelegate: class {
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
 /// Superclass for the GFInfoViewControllers
 class GFItemInfoViewController: UIViewController {
 
@@ -18,7 +25,7 @@ class GFItemInfoViewController: UIViewController {
     let actionButton = GFButton()
 
     var user: User!
-    weak var delegate: UserInfoViewControllerDelegate!
+    weak var delegate: ItemInfoViewControllerDelegate!
 
     // MARK: - Initializers
 
@@ -63,8 +70,7 @@ class GFItemInfoViewController: UIViewController {
     @objc func actionButtonTapped() { } // overridden by subclass for specific behavior
 
     private func layoutUI() {
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        view.addSubviews(stackView, actionButton)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20

@@ -8,10 +8,9 @@
 
 import UIKit
 
-// define protocol for this file's viewController
+/// call a method on FollowerListViewController to dismiss a VC
 protocol UserInfoViewControllerDelegate: class {
-    func didTapGitHubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
+    func didRequestFollowers(for username: String)
 }
 
 class UserInfoViewController: UIViewController {
@@ -27,7 +26,7 @@ class UserInfoViewController: UIViewController {
     // MARK: - Properties
 
     var username: String!
-    weak var delegate: FollowerListViewControllerDelegate!
+    weak var delegate: UserInfoViewControllerDelegate!
 
     // MARK: - ViewController Lifecycle
 
@@ -94,7 +93,7 @@ class UserInfoViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180),
+            headerView.heightAnchor.constraint(equalToConstant: 210),
 
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
@@ -103,7 +102,7 @@ class UserInfoViewController: UIViewController {
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
 
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
 
     }
@@ -122,7 +121,7 @@ class UserInfoViewController: UIViewController {
 }
 
 // managing the button taps on this controller. Protocol conformance
-extension UserInfoViewController: UserInfoViewControllerDelegate {
+extension UserInfoViewController: ItemInfoViewControllerDelegate {
     func didTapGitHubProfile(for user: User) {
         print("didTapGitHubProfile")
         // show safari view controller

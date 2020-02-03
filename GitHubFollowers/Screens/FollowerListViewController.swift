@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol FollowerListViewControllerDelegate: class {
-    func didRequestFollowers(for username: String)
-}
-
 class FollowerListViewController: GFDataLoadingViewController {
 
     enum Section { // required by diffable data source
@@ -219,11 +215,9 @@ extension FollowerListViewController: UISearchResultsUpdating {
     }
 }
 
-extension FollowerListViewController: FollowerListViewControllerDelegate {
+extension FollowerListViewController: UserInfoViewControllerDelegate {
 
     func didRequestFollowers(for username: String) {
-        print("get followers for that user")
-
         self.username = username
         title = username
         page = 1
