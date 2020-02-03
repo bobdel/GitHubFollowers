@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class FavoritesListViewController: GFDataLoadingViewController {
 
@@ -19,6 +20,7 @@ class FavoritesListViewController: GFDataLoadingViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        os_log("viewDidLoad FavoritesVC", log: Log.general, type: .info)
         configureViewController()
         configureTableView()
     }

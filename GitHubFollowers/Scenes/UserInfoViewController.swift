@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 // MARK: - Protocol
 
@@ -37,6 +38,7 @@ class UserInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        os_log("viewDidLoad UserInfoVC", log: Log.general, type: .info)
         configureViewController()
         configureScrollView()
         layoutUI()

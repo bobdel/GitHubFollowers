@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class SearchViewController: UIViewController {
 
@@ -22,6 +23,7 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        os_log("viewDidLoad SearchVC", log: Log.general, type: .info)
         view.backgroundColor = .systemBackground
         view.addSubviews(logoImageView, usernameTextField, callToActionButton)
         configureLogoImageView()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class FollowerListViewController: GFDataLoadingViewController {
 
@@ -45,6 +46,7 @@ class FollowerListViewController: GFDataLoadingViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        os_log("viewDidLoad FollowerListVC", log: Log.general, type: .info)
         configureViewController()
         configureSearchController()
         configureCollectionView()

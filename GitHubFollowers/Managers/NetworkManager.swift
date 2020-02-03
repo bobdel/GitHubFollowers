@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import os.log
+
+// MARK: TODO pull to refresh does not work on GitHub Followers button
 
 /// A singleton that manages network requests
 class NetworkManager {
+
+    // MARK: - Properties
 
     static let shared = NetworkManager()
     private let baseURL = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>() // in singleton to create an appwide cache
 
-    // initialize Singleton
-    private init() { }
+    // MARK: - Initializers
+
+    private init() { }     // initialize Singleton
+
+    // MARK: - Public Methods
 
     /// Returns an array of Follower or an error
     /// - Parameters:
@@ -27,6 +35,7 @@ class NetworkManager {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
 
         guard let url = URL(string: endpoint) else {
+            os_log("invalid URL for username", log: Log.network)
             completed(.failure(.invalidUsername))
             return
         }
@@ -35,18 +44,21 @@ class NetworkManager {
 
             // handle the error. If error not nil call completion handler with error message
             if error != nil {
+                os_log("unable to complete", log: Log.network)
                 completed(.failure(.unableToComplete))
                 return
             }
 
             // handle the response. Check for success status code or call completion handler
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                os_log("invalid HTTP response", log: Log.network, type: .error)
                 completed(.failure(.invalidResponse))
                 return
             }
 
             // handle the data
             guard let data = data else {
+                os_log("invalid data", log: Log.network)
                 completed(.failure(.invalidData))
                 return
             }
@@ -55,8 +67,10 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let followers = try decoder.decode([Follower].self, from: data)
+                os_log("JSON data decode SUCCESS", log: Log.network)
                 completed(.success(followers))
             } catch {
+                os_log("JSON parser failed", log: Log.network)
                 completed(.failure(.invalidData))
             }
         }
@@ -65,10 +79,9 @@ class NetworkManager {
 
     }
 
-    /// Returns an array of Follower or an error
+    /// Fetch information for user from network
     /// - Parameters:
     ///   - username: A valid GitHub username string
-    ///   - page: a integer for the page number
     ///   - completed: a closure for the network request and result handler
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
         let endpoint = baseURL + "\(username)"
