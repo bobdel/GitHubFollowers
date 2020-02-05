@@ -9,8 +9,6 @@
 import UIKit
 import os.log
 
-// MARK: TODO Git Followers button on user info screen does not pull to refresh
-
 /// A singleton that manages network requests
 class NetworkManager {
 
