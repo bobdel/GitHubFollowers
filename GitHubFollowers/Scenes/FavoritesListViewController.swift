@@ -120,6 +120,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
                 // remove from array local to self
                 self.favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
+                os_log("Removed Favorite at row %d", log: Log.general, type: .info, indexPath.row)
                 return
             }
 

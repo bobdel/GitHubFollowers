@@ -56,6 +56,7 @@ class FollowerListViewController: GFDataLoadingViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        os_log("viewWillAppear FollowerListVC", log: Log.general, type: .info)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
@@ -89,6 +90,7 @@ class FollowerListViewController: GFDataLoadingViewController {
     }
 
     private func getFollowers(username: String, page: Int) {
+        os_log("getFollowers called", log: Log.general, type: .info)
         showLoadingView()
         isLoadingMoreFollowers = true
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
@@ -191,8 +193,11 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
+        os_log("scrollViewDidEndDragging", log: Log.general, type: .info)
+        print("offsetY \(offsetY) contentHeight \(contentHeight) - height \(height) Bool is \(offsetY > contentHeight - height)")
 
         if offsetY > contentHeight - height {
+            print(hasMoreFollowers, !isLoadingMoreFollowers)
             guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
             page += 1
             getFollowers(username: username, page: page)
@@ -234,6 +239,7 @@ extension FollowerListViewController: UISearchResultsUpdating {
 extension FollowerListViewController: UserInfoViewControllerDelegate {
 
     func didRequestFollowers(for username: String) {
+        os_log("didRequestFolloers called", log: Log.general, type: .info)
         self.username = username
         title = username
         page = 1
@@ -241,6 +247,7 @@ extension FollowerListViewController: UserInfoViewControllerDelegate {
         followers.removeAll()
         filteredFollowers.removeAll()
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        hasMoreFollowers = true
 
         getFollowers(username: username, page: page)
 
