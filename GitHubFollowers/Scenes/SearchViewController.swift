@@ -35,6 +35,10 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         usernameTextField.text = ""
+                #if DEBUG
+                usernameTextField.text! = "SAllen0400"
+                #endif
+
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
