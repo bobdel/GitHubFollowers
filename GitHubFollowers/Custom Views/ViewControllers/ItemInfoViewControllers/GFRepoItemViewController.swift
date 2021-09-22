@@ -10,7 +10,7 @@ import UIKit
 
 // define protocol to message UserInfoViewController
 // handles button taps on modal info screen
-protocol GFRepoItemViewControllerDelegate: class {
+protocol GFRepoItemViewControllerDelegate: AnyObject {
     func didTapGitHubProfile(for user: User)
 }
 

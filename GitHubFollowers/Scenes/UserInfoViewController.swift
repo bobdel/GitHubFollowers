@@ -12,7 +12,7 @@ import os.log
 // MARK: - Protocol
 
 /// call a method on FollowerListViewController to dismiss a VC
-protocol UserInfoViewControllerDelegate: class {
+protocol UserInfoViewControllerDelegate: AnyObject {
     func didRequestFollowers(for username: String)
 }
 

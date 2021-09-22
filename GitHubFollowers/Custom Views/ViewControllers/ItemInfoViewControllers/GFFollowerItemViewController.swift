@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GFFollowerItemViewControllerDelegate: class {
+protocol GFFollowerItemViewControllerDelegate: AnyObject {
     func didTapGetFollowers(for user: User)
 }
 
