@@ -17,10 +17,14 @@ class NetworkManager {
     static let shared = NetworkManager()
     private let baseURL = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>() // in singleton to create an appwide cache
+    let decoder = JSONDecoder()
 
     // MARK: - Initializers
 
-    private init() { }     // initialize Singleton
+    private init() { // initialize Singleton
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+    }
 
     // MARK: - Public Methods
 
@@ -29,53 +33,31 @@ class NetworkManager {
     ///   - username: A valid GitHub username string
     ///   - page: a integer for the page number
     ///   - completed: a closure for the network request and result handler
-    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
+    func getFollowers(for username: String, page: Int) async throws -> [Follower] {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
 
         guard let url = URL(string: endpoint) else {
             os_log("invalid URL for username", log: Log.network)
-            completed(.failure(.invalidUsername))
-            return
+            throw GFError.invalidUsername
         }
 
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-
-            // handle the error. If error not nil call completion handler with error message
-            if error != nil {
-                os_log("unable to complete", log: Log.network)
-                completed(.failure(.unableToComplete))
-                return
-            }
+        let (data, response) = try await URLSession.shared.data(from: url)
 
             // handle the response. Check for success status code or call completion handler
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 os_log("invalid HTTP response", log: Log.network, type: .error)
-                completed(.failure(.invalidResponse))
-                return
-            }
-
-            // handle the data
-            guard let data = data else {
-                os_log("invalid data", log: Log.network)
-                completed(.failure(.invalidData))
-                return
+                throw GFError.invalidResponse
             }
 
             do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let followers = try decoder.decode([Follower].self, from: data)
                 os_log("JSON data decode SUCCESS", log: Log.network)
-                completed(.success(followers))
+                return try decoder.decode([Follower].self, from: data)
+
             } catch {
                 os_log("JSON parser failed", log: Log.network)
-                completed(.failure(.invalidData))
+                throw GFError.invalidData
             }
         }
-
-        task.resume()
-
-    }
 
     /// Fetch information for user from network
     /// - Parameters:
