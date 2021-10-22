@@ -93,18 +93,30 @@ class FollowerListViewController: GFDataLoadingViewController {
         isLoadingMoreFollowers = true
 
         Task {
-            do {
-                let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
-                updateUI(with: followers)
+//            do {
+//                let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+//                updateUI(with: followers)
+//                dismissLoadingView()
+//            } catch {
+//                if let gfError = error as? GFError { // respond to our internal errors
+//                    presentGFAlertOnMainThread(title: "Bad Stuff", message: gfError.rawValue, buttonTitle: "Ok")
+//                } else {
+//                    presentDefaultError()
+//                }
+//                dismissLoadingView()
+//            }
+
+            // simpler, no error parsing
+            guard let followers = try? await NetworkManager.shared.getFollowers(for: username, page: page) else {
+                presentDefaultError()
+                isLoadingMoreFollowers = false
                 dismissLoadingView()
-            } catch {
-                if let gfError = error as? GFError { // respond to our internal errors
-                    presentGFAlertOnMainThread(title: "Bad Stuff", message: gfError.rawValue, buttonTitle: "Ok")
-                } else {
-                    presentDefaultError()
-                }
-                dismissLoadingView()
+                return
             }
+
+            updateUI(with: followers)
+            isLoadingMoreFollowers = false
+            dismissLoadingView()
         }
     }
 
