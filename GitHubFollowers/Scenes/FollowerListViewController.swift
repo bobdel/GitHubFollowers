@@ -93,30 +93,32 @@ class FollowerListViewController: GFDataLoadingViewController {
         isLoadingMoreFollowers = true
 
         Task {
-//            do {
-//                let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
-//                updateUI(with: followers)
-//                dismissLoadingView()
-//            } catch {
-//                if let gfError = error as? GFError { // respond to our internal errors
-//                    presentGFAlertOnMainThread(title: "Bad Stuff", message: gfError.rawValue, buttonTitle: "Ok")
-//                } else {
-//                    presentDefaultError()
-//                }
-//                dismissLoadingView()
-//            }
-
-            // simpler, no error parsing
-            guard let followers = try? await NetworkManager.shared.getFollowers(for: username, page: page) else {
-                presentDefaultError()
+            do {
+                let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+                updateUI(with: followers)
                 isLoadingMoreFollowers = false
                 dismissLoadingView()
-                return
+            } catch {
+                if let gfError = error as? GFError { // respond to our internal errors
+                    presentGFAlertOnMainThread(title: "Bad Stuff", message: gfError.rawValue, buttonTitle: "Ok")
+                } else {
+                    presentDefaultError()
+                }
+                isLoadingMoreFollowers = false
+                dismissLoadingView()
             }
 
-            updateUI(with: followers)
-            isLoadingMoreFollowers = false
-            dismissLoadingView()
+            // simpler, no error parsing. Code works as tested. Left here as sample code.
+//            guard let followers = try? await NetworkManager.shared.getFollowers(for: username, page: page) else {
+//                presentDefaultError()
+//                isLoadingMoreFollowers = false
+//                dismissLoadingView()
+//                return
+//            }
+//
+//            updateUI(with: followers)
+//            isLoadingMoreFollowers = false
+//            dismissLoadingView()
         }
     }
 
