@@ -21,6 +21,18 @@ extension UIViewController {
         }
     }
 
+    /// Creates and presents an alert
+    func presentDefaultError() {
+            let alertVC = GFAlertViewController(
+                title: "Something went wrong.",
+                message: "We were unable to complete your task at this time. Please try again.",
+                buttonTitle: "Ok"
+            )
+            alertVC.modalPresentationStyle = .overFullScreen
+            alertVC.modalTransitionStyle = .crossDissolve
+            self.present(alertVC, animated: true)
+    }
+
     /// present SafariViewController
     func presentSafariViewController(with url: URL) {
         let safariViewController = SFSafariViewController(url: url)

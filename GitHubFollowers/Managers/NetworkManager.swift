@@ -43,21 +43,21 @@ class NetworkManager {
 
         let (data, response) = try await URLSession.shared.data(from: url)
 
-            // handle the response. Check for success status code or call completion handler
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                os_log("invalid HTTP response", log: Log.network, type: .error)
-                throw GFError.invalidResponse
-            }
-
-            do {
-                os_log("JSON data decode SUCCESS", log: Log.network)
-                return try decoder.decode([Follower].self, from: data)
-
-            } catch {
-                os_log("JSON parser failed", log: Log.network)
-                throw GFError.invalidData
-            }
+        // handle the response. Check for success status code or call completion handler
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            os_log("invalid HTTP response", log: Log.network, type: .error)
+            throw GFError.invalidResponse
         }
+
+        do {
+            os_log("JSON data decode SUCCESS", log: Log.network)
+            return try decoder.decode([Follower].self, from: data)
+
+        } catch {
+            os_log("JSON parser failed", log: Log.network)
+            throw GFError.invalidData
+        }
+    }
 
     /// Fetch information for user from network
     /// - Parameters:
@@ -132,13 +132,13 @@ class NetworkManager {
         // make a network request for the image
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self,
-                error == nil,
-                let response = response as? HTTPURLResponse, response.statusCode == 200,
-                let data = data,
-                let image = UIImage(data: data) else {
-                    completed(nil) // no image available
-                    return
-                }
+                  error == nil,
+                  let response = response as? HTTPURLResponse, response.statusCode == 200,
+                  let data = data,
+                  let image = UIImage(data: data) else {
+                      completed(nil) // no image available
+                      return
+                  }
 
             // if we have an image
 
