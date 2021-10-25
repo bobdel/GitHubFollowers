@@ -89,45 +89,22 @@ class NetworkManager {
     /// - Parameters:
     ///   - urlString: The URL on the network to retrieve string
     ///   - completed: update UI
-    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+    func downloadImage(from urlString: String) async -> UIImage? {
 
         // return image if found in cache
-
         let cacheKey = NSString(string: urlString) // cache uses URL as key
-
-        if let image = cache.object(forKey: cacheKey) {
-            completed(image) // send image to completion handler
-            return
-        }
-
-        // if image not in cache, fetch from network
-        // this code is terse because
-        // user never sees errors
-
-        guard let url = URL(string: urlString) else {
-            completed(nil) // no image URL available
-            return
-        }
+        if let image = cache.object(forKey: cacheKey) { return image }
 
         // make a network request for the image
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self,
-                  error == nil,
-                  let response = response as? HTTPURLResponse, response.statusCode == 200,
-                  let data = data,
-                  let image = UIImage(data: data) else {
-                      completed(nil) // no image available
-                      return
-                  }
+        guard let url = URL(string: urlString) else { return nil }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
 
-            // if we have an image
-
-            self.cache.setObject(image, forKey: cacheKey)
-
-            completed(image) // this is the image created in the guard block above
+            guard let image = UIImage(data: data) else { return nil }
+            cache.setObject(image, forKey: cacheKey)
+            return image
+        } catch {
+            return nil
         }
-
-        task.resume()
-
     }
 }
