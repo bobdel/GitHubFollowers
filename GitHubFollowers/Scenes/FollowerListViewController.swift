@@ -163,18 +163,23 @@ class FollowerListViewController: GFDataLoadingViewController {
     @objc func addButtonTapped() {
         showLoadingView()
 
-        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-            guard let self = self else { return }
-            self.dismissLoadingView()
-
-            switch result {
-            case .success(let user):
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUserInfo(for: username)
                 self.addUserToFavorites(user: user)
+                self.dismissLoadingView()
+            } catch {
+                if let gfError = error as? GFError {
+                    presentGFAlertOnMainThread(
+                        title: "Something went wrong",
+                        message: gfError.rawValue,
+                        buttonTitle: "Ok"
+                    )
+                } else {
+                    presentDefaultError()
+                }
 
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong",
-                                                message: error.rawValue,
-                                                buttonTitle: "Ok") // network error
+                dismissLoadingView()
             }
         }
     }
