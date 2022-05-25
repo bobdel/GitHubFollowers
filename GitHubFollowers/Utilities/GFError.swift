@@ -17,3 +17,5 @@ enum GFError: String, Error {
     case unableToFavorite = "There was an error favoriting this user. Please try again."
     case alreadyInFavorites = "You've already favorited this user. You must REALLY like them!"
 }
+
+///
