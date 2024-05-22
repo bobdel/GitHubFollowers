@@ -52,7 +52,7 @@ class FavoritesListViewController: GFDataLoadingViewController {
 
     func getFavorites() {
         PersistenceManager.retrieveFavorites { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
 
             switch result {
             case .success(let favorites): // RESULT SUCCESS
@@ -114,12 +114,15 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
 
         // remove from persistent array
         PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
-            guard let self = self else { return }
+            guard let self else { return }
 
-            guard let error = error else { // if the deletion was successful
+            guard let error else { // if the deletion was successful
                 // remove from array local to self
                 self.favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
+                if favorites.isEmpty {
+                    self.showEmptyStateView(with: "No Favorites?\nAdd one on the Follower screen", in: self.view)
+                }
                 return
             }
 

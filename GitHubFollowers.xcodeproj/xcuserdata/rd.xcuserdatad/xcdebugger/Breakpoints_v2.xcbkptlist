@@ -38,68 +38,6 @@
             endingLineNumber = "26"
             landmarkName = "FollowerListViewController"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "66C40D57-8452-43D3-B7EE-724576DAA1F8 - 54d0a919644f8671"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitHFollowers.FollowerListViewController.hasMoreFollowers.getter : Swift.Bool"
-                  moduleName = "GitHFollowers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rd/Developer/sallen/GitHubFollowers/GitHubFollowers/Scenes/FollowerListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "89">
-               </Location>
-               <Location
-                  uuid = "66C40D57-8452-43D3-B7EE-724576DAA1F8 - 1b4cc14546be2185"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitHFollowers.FollowerListViewController.hasMoreFollowers.setter : Swift.Bool"
-                  moduleName = "GitHFollowers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rd/Developer/sallen/GitHubFollowers/GitHubFollowers/Scenes/FollowerListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "122">
-               </Location>
-               <Location
-                  uuid = "66C40D57-8452-43D3-B7EE-724576DAA1F8 - e57e9cddc02f05ac"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitHFollowers.FollowerListViewController.hasMoreFollowers.modify : Swift.Bool"
-                  moduleName = "GitHFollowers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rd/Developer/sallen/GitHubFollowers/GitHubFollowers/Scenes/FollowerListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  uuid = "66C40D57-8452-43D3-B7EE-724576DAA1F8 - 73702a5a50fe2c8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitHFollowers.FollowerListViewController.hasMoreFollowers.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "GitHFollowers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rd/Developer/sallen/GitHubFollowers/GitHubFollowers/Scenes/FollowerListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
