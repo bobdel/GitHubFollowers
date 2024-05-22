@@ -332,8 +332,9 @@
 		717DECF423C6501D0005C3A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "Robert DeLaurentis";
 				TargetAttributes = {
 					717DECFB23C6501D0005C3A2 = {
