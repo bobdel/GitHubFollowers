@@ -50,3 +50,7 @@ class GFButton: UIButton {
         configuration?.imagePlacement = .leading
     }
 }
+
+#Preview(traits: .sizeThatFitsLayout) {
+    GFButton(color: .blue, title: "Click Me", systemImageName: "Pencil")
+}

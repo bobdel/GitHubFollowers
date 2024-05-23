@@ -32,6 +32,18 @@ class FavoritesListViewController: GFDataLoadingViewController {
 
     // MARK: - Layout methods
 
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        if favorites.isEmpty {
+            var config = UIContentUnavailableConfiguration.empty()
+            config.image = .init(systemName: "star")
+            config.text = "No Favorites"
+            config.secondaryText = "Add a favorite on the Follower List screen."
+            contentUnavailableConfiguration = config
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
+
     func configureViewController() {
         view.backgroundColor = .systemBackground
         title = "Favorites"
@@ -68,14 +80,11 @@ class FavoritesListViewController: GFDataLoadingViewController {
 
     func updateUI(with favorites: [Follower]) {
         // check for empty state
-        if favorites.isEmpty {
-            self.showEmptyStateView(with: "No Favorites?\nAdd one on the Follower screen", in: self.view)
-        } else {
-            self.favorites = favorites
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.view.bringSubviewToFront(self.tableView) // edge case to avoid issues if empty state
-            }
+        self.favorites = favorites
+        setNeedsUpdateContentUnavailableConfiguration()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.view.bringSubviewToFront(self.tableView) // edge case to avoid issues if empty state
         }
     }
 }
@@ -120,9 +129,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
                 // remove from array local to self
                 self.favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
-                if favorites.isEmpty {
-                    self.showEmptyStateView(with: "No Favorites?\nAdd one on the Follower screen", in: self.view)
-                }
+                setNeedsUpdateContentUnavailableConfiguration()
                 return
             }
 
